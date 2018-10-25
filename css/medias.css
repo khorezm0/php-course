@@ -1,0 +1,20 @@
+/*
+mobile : 576px
+middle : 768px
+tablet : 900px
+desktop : 1286px
+*/
+
+@media screen and (max-width:768px){
+    .logo-col > img {
+        max-height: 34px;
+    }
+    .content{
+        margin-top: 80px;
+    }
+}
+@media screen and (max-width: 1286px){
+    body{
+        margin: auto;
+    }
+}

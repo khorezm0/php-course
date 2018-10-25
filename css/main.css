@@ -1,0 +1,239 @@
+.material-icons{
+    line-height: inherit;
+    font-size: inherit;
+}
+
+body{
+    min-width: 576px;
+    max-width: 1286px;
+    position: relative;
+    margin: auto auto 20px auto;
+    box-shadow: 0 5px #bdbdbd;
+}
+
+/*------ HEADER: ------*/
+
+header{
+    position: fixed;
+
+    min-width: 576px;
+    max-width: 1286px;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    color: white;
+    background-color: #212121;
+    background-color: rgba(0, 0, 0, 0.67);
+
+    font-family: 'Noto Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+header .btn-link{
+    color: #bdd9ff;
+}
+header .btn-link:hover{
+     color: white;
+}
+header .btn-link .link-ico{
+    float: left;
+    font-size: 18px;
+    margin-right: 4px;
+}
+
+.header-btn{
+    height: 40px;
+    padding: 1px 8px;
+    font-size: 24px;
+}
+
+.header-menu-btns{
+    text-align: center;
+    min-width: 140px;
+}
+
+.page-title{
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.logo-col > img{
+    max-height: 110px;
+}
+
+.header-upper-column{
+    margin: 20px 0;
+}
+.outl-btn-disbaled{
+    border: none;
+}
+
+/*-------- MAIN CAROUSEL -------------*/
+
+.main-sales{
+    background: #DD5E89;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #F7BB97, #DD5E89);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #F7BB97, #DD5E89); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.main-sales{
+    height: 800px;
+    padding: 0;
+    position: relative;
+}
+
+.main-sales .carousel-inner,
+.main-sales .carousel-item{
+    width: 100%;
+    height: 100%;
+}
+
+.main-sales .carousel-item .slide{
+    width: 100%;
+    height: 100%;
+
+    background-position: center;
+    background-size: cover;
+
+    /*Browser Specific*/
+    -webkit-filter: brightness(0.6);
+    -moz-filter: brightness(0.6);
+    -o-filter: brightness(0.6);
+    filter: brightness(0.6);
+}
+
+.main-sales .carousel-caption{
+    right: 5%;
+    left: 5%;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+/* ----- HOT: ----- */
+
+.banners{
+    width: 100%;
+    padding: 0 0 30px 0;
+    margin-top: 32px;
+}
+.banners-inner{
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0,0,0,0.47);*/
+}
+.banners .title{
+    padding: 26px 40px;
+}
+
+/* ------------ SHOP: ----------- */
+.shop-item{
+    margin: 10px auto;
+    position: relative;
+    width: 284px;
+    padding: 14px 14px 30px 14px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.shop-item:hover{
+    background-color: #272727;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.27);
+}
+.shop-item .image{
+    width: 256px;
+    height: 256px;
+    background: url("../images/shop/i0000000001.jpg") no-repeat center;
+    background-size: contain;
+}
+.shop-item .item-title{
+    font-size: 16px;
+    margin: 5px 0;
+}
+.shop-item .item-description{
+    font-size: 12px;
+}
+.shop-item .item-icon{
+    font-size: 32px;
+    position: absolute;
+    right: 70px;
+    top: 20px;
+    height: 46px;
+    width: 46px;
+    text-align: center;
+    line-height: 48px;
+    border-radius: 50%;
+    background-color: white;
+    color: #272727;
+    padding-left: 2px;
+    opacity: 0;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.shop-item .item-icon + .item-icon{
+    right: 20px;
+}
+
+.shop-item:hover .item-icon{
+    opacity: 1;
+}
+
+.shop-item .item-icon:hover,
+.shop-item .read-more-btn{
+    background-color: #272727;
+    color: white;
+}
+.shop-item .cart-btn:hover + .read-more-btn{
+    background-color: white;
+    color: #272727;
+}
+.shop-item .price{
+    color: red;
+    font-weight: 500;
+    float: right;
+}
+
+/* misc */
+
+.flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-end-align{
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer{
+    width: 100%;
+    height: 64px;
+    color: white;
+    background-color: #212121;
+}
+
+/*------------- CONTENTS: -------------------*/
+
+.content {
+    margin-top: 140px;
+    padding: 20px;
+}
+
+/*------------ITEM PAGE: ---------*/
+.item-page .img-col {
+    max-width: 50%;
+}
