@@ -118,24 +118,24 @@ header .btn-link .link-ico{
     font-size: 16px;
 }
 
-/* ----- HOT: ----- */
+/* ----- REGULAR LIST: ----- */
 
-.banners{
+.regular-list{
     width: 100%;
     padding: 0 0 30px 0;
     margin-top: 32px;
 }
-.banners-inner{
+.regular-list-inner{
     width: 100%;
     height: 100%;
     /*background-color: rgba(0,0,0,0.47);*/
 }
-.banners .title{
+.regular-list .title{
     padding: 26px 40px;
 }
 
 /* ------------ SHOP: ----------- */
-.shop-item{
+.regular-list-item{
     margin: 10px auto;
     position: relative;
     width: 284px;
@@ -146,29 +146,29 @@ header .btn-link .link-ico{
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.shop-item:hover{
+.regular-list-item:hover{
     background-color: #272727;
     color: #ffffff;
     cursor: pointer;
     box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.27);
 }
-.shop-item .image{
+.regular-list-item .image{
     width: 256px;
     height: 256px;
     background: url("../images/shop/i0000000001.jpg") no-repeat center;
     background-size: contain;
 }
-.shop-item .item-title{
+.regular-list-item .item-title{
     font-size: 16px;
     margin: 5px 0;
 }
-.shop-item .item-description{
+.regular-list-item .item-description{
     font-size: 12px;
 }
-.shop-item .item-icon{
+.regular-list-item .item-icon{
     font-size: 32px;
     position: absolute;
-    right: 70px;
+    right: 20px;
     top: 20px;
     height: 46px;
     width: 46px;
@@ -185,24 +185,24 @@ header .btn-link .link-ico{
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.shop-item .item-icon + .item-icon{
-    right: 20px;
+.regular-list-item .cart-btn{
+    right: 70px;
 }
 
-.shop-item:hover .item-icon{
+.regular-list-item:hover .item-icon{
     opacity: 1;
 }
 
-.shop-item .item-icon:hover,
-.shop-item .read-more-btn{
+.regular-list-item .item-icon:hover,
+.regular-list-item .read-more-btn{
     background-color: #272727;
     color: white;
 }
-.shop-item .cart-btn:hover + .read-more-btn{
+.regular-list-item .cart-btn:hover + .read-more-btn{
     background-color: white;
     color: #272727;
 }
-.shop-item .price{
+.regular-list-item .price{
     color: red;
     font-weight: 500;
     float: right;
@@ -232,6 +232,7 @@ footer{
     margin-top: 140px;
     padding: 20px;
 }
+
 
 /*------------ITEM PAGE: ---------*/
 .item-page .img-col {
