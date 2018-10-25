@@ -66,17 +66,45 @@
             <button type="submit" class="btn btn-dark my-3">Изменить</button>
         </div>
         <form class="col admin-form">
-            <h3 class="mb-3">Редактирование сотрудника: #000213</h3>
+            <h3 class="mb-3">Редактирование предмета: #000213</h3>
             <div class="row mb-3">
-                <label for="name" class="col-2 mb-0">Имя:</label>
-                <input id="name" type="text" class="form-control col-4" placeholder="Введите имя" value="Иванов Андрей" />
+                <label for="name" class="col-2 mb-0">Название:</label>
+                <input id="name" type="text" class="form-control col-4" placeholder="Введите название" value="Гранат" />
             </div>
             <div class="row mb-3">
-                <label for="access" class="col-2 mb-0">Права:</label>
-                <select name="access" id="access" class="col-4 form-control">
+                <label for="item-category" class="col-2 mb-0">Категория:</label>
+                <select name="item-category" id="item-category" class="col-4 form-control">
+                    <option>Натюрморт</option>
+                    <option>Пейзаж</option>
+                    <option>Портреты</option>
+                </select>
+            </div>
+            <div class="row mb-3">
+                <label for="author" class="col-2 mb-0">Автор:</label>
+                <select name="author" id="author" class="col-4 form-control">
                     <option>Нет</option>
-                    <option>Модератор</option>
-                    <option>Администратор</option>
+                    <option>Васнецов</option>
+                </select>
+            </div>
+            <div class="row mb-3">
+                <label for="mat" class="col-2 mb-0">Материал:</label>
+                <select name="mat" id="mat" class="col-4 form-control">
+                    <option>Холст</option>
+                </select>
+            </div>
+            <div class="row mb-3">
+                <label for="paint" class="col-2 mb-0">Краски:</label>
+                <select name="paint" id="paint" class="col-4 form-control">
+                    <option>Масло</option>
+                    <option>Акварель</option>
+                    <option>Гуашь</option>
+                </select>
+            </div>
+            <div class="row mb-3">
+                <label for="size" class="col-2 mb-0">Размер:</label>
+                <select name="size" id="size" class="col-4 form-control">
+                    <option>40x40см</option>
+                    <option>40x60см</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Сохранить</button>

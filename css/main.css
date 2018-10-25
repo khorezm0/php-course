@@ -225,7 +225,17 @@ footer{
     color: white;
     background-color: #212121;
 }
-
+.admin-form label{
+    display: flex;
+    align-items: center;
+}
+.items-img-col {
+    height: 128px;
+}
+.items-img-col img{
+    display: inline-block;
+    height: 100%;
+}
 /*------------- CONTENTS: -------------------*/
 
 .content {
@@ -235,6 +245,6 @@ footer{
 
 
 /*------------ITEM PAGE: ---------*/
-.item-page .img-col {
+.img-col {
     max-width: 50%;
 }
