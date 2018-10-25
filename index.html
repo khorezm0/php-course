@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>СарИсскуство</title>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/medias.css">
+
+        <script src="js/bootstrap.min.js"></script>
+
+    </head>
+    <body class="main-page">
+        <header class="container-fluid">
+            <div class="row">
+                <div class="col-2 logo-col"><img src="images/icon.png"></div>
+                <div class="col-10">
+                    <div class="row header-upper-column">
+                        <div class="col-2 page-title">SarИсскуство</div>
+
+                        <!--PC and Tablet-->
+                        <div class="col-6 d-none d-md-block d-lg-block"></div>
+                        <button class="col-sm btn btn-link d-none d-md-block d-lg-block">
+                            <i class="material-icons link-ico">face</i> Login
+                        </button>
+                        <button class="col-sm btn btn-link d-none d-md-block d-lg-block">
+                            <i class="material-icons link-ico">perm_identity</i> Register
+                        </button>
+                        <div class="col-sm d-none d-md-block d-lg-block"></div>
+
+                        <!--Mobile-->
+                        <div class="col-4 d-md-none"></div>
+                        <div class="col d-md-none flex-end-align">
+                            <button class="btn btn-outline-light header-btn"><i class="material-icons">search</i></button>
+                            <button class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></button>
+                        </div>
+                    </div>
+                    <div class="row d-none d-md-flex d-lg-flex">
+                        <div class="col-sm"><a href="index.html" class="btn btn-outline-light">Домашняя</a></div>
+                        <div class="col-sm"><button class="btn btn-outline-light outl-btn-disbaled">Галерея</button></div>
+                        <div class="col-sm"><button class="btn btn-outline-light outl-btn-disbaled">Заказ</button></div>
+                        <div class="col-sm header-menu-btns">
+                            <button class="btn btn-outline-light header-btn"><i class="material-icons">search</i></button>
+                            <button class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="main-page-carousel" class="container-fluid main-sales carousel slide" data-ride="carousel" data-interval="3000">
+
+            <!--bottom buttons-->
+            <ol class="carousel-indicators">
+                <li data-target="#main-page-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#main-page-carousel" data-slide-to="1"></li>
+                <li data-target="#main-page-carousel" data-slide-to="2"></li>
+            </ol>
+
+            <!--carousel buttons-->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="slide"  style="background-image: url('images/slides/1.jpg')"></div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>
+                            В галерее выставлены на продажу работы более 650 авторов - более 19500 произведений искусства:
+                            <br>
+                            живопись, акварель, пастель, гуашь, гравюра, скульптура, батик, гобелен, витраж, мозаика и авторская керамика.
+                            <br>
+                            У нас вы можете купить готовую картину или заказать копию любимой картины, портрет или художественную роспись стен.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slide"  style="background-image: url('images/slides/2.jpg')"></div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>
+                            Каждая картина наполнена своей неповторимой гармонией, позитивной энергией цвета и фактуры,
+                            <br>
+                            которые позволяют глубже почувствовать эмоциональное состояние художника
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slide"  style="background-image: url('images/slides/3.jpg')"></div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>
+                            Созерцая их, вы каждый раз открываете для себя что-то новое...
+                            <br>
+                            Поэтому покупка картины - это поиск «друга», а также - замечательный подарок для всех случаев жизни
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Left right buttons-->
+            <a class="carousel-control-prev" href="#main-page-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#main-page-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="container-fluid banners">
+            <div class="banners-inner">
+                <h4 class="title">&#x1F525; Популярные</h4>
+                <div class="container-fluid flex-wrap">
+
+                    <div class="col">
+                        <div class="shop-item">
+                            <div class="image">
+                            </div>
+                            <p class="item-title">Гранат</p>
+                            <p class="text-info">холст / масло / 40x40см</p>
+                            <span class="price">1000 руб</span>
+
+                            <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>
+                            <span class="item-icon read-more-btn"><i class="material-icons">arrow_forward_ios</i></span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="shop-item">
+                            <div class="image" style="background-image: url('images/shop/i0000000002.jpg')">
+                            </div>
+                            <p class="item-title">Девушка с розой</p>
+                            <p class="text-info">холст / масло / 90x60см</p>
+                            <span class="price">37 500 руб</span>
+
+                            <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>
+                            <span class="item-icon read-more-btn"><i class="material-icons">arrow_forward_ios</i></span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="shop-item">
+                            <div class="image" style="background-image: url('images/shop/i0000000003.jpg')">
+                            </div>
+                            <p class="item-title">Английские сеттеры</p>
+                            <p class="text-info">холст / масло / 50x60см</p>
+                            <span class="price">18 000 руб</span>
+
+                            <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>
+                            <span class="item-icon read-more-btn"><i class="material-icons">arrow_forward_ios</i></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <div class="shop-item">
+                            <div class="image">
+                            </div>
+                            <p class="item-title">Гранат</p>
+                            <p class="text-info">холст / масло / 40x40см</p>
+                            <span class="price">1000 руб</span>
+
+                            <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>
+                            <span class="item-icon read-more-btn"><i class="material-icons">arrow_forward_ios</i></span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="shop-item">
+                            <div class="image" style="background-image: url('images/shop/i0000000002.jpg')">
+                            </div>
+                            <p class="item-title">Девушка с розой</p>
+                            <p class="text-info">холст / масло / 90x60см</p>
+                            <span class="price">37 500 руб</span>
+
+                            <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>
+                            <span class="item-icon read-more-btn"><i class="material-icons">arrow_forward_ios</i></span>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="shop-item">
+                            <div class="image" style="background-image: url('images/shop/i0000000003.jpg')">
+                            </div>
+                            <p class="item-title">Английские сеттеры</p>
+                            <p class="text-info">холст / масло / 50x60см</p>
+                            <span class="price">18 000 руб</span>
+
+                            <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>
+                            <span class="item-icon read-more-btn"><i class="material-icons">arrow_forward_ios</i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+
+        </footer>
+    </body>
+</html>
