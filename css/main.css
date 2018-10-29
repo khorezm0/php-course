@@ -248,3 +248,33 @@ footer{
 .img-col {
     max-width: 50%;
 }
+.item-image{
+    box-shadow: 4px 3px #00000054;
+}
+.delete-button{
+    opacity: 0;
+    color: #000000;
+    text-shadow: 0 2px 2px white;
+    transition: opacity 0.3s;
+    user-select: none;
+    cursor: pointer;
+}
+
+.delete-button:hover,
+.item-image:hover + .delete-button{
+    opacity: 1;
+}
+
+.upload-button{
+    opacity: 0;
+    color: #ffffff;
+    text-shadow: 0 2px 2px black;
+    transition: opacity 0.3s;
+    user-select: none;
+    cursor: pointer;
+}
+
+.upload-button:hover,
+.item-image:hover + .upload-button{
+    opacity: 1;
+}
