@@ -74,6 +74,7 @@
                     <option>Пейзаж</option>
                     <option>Портреты</option>
                 </select>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModal">+</button>
             </div>
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="author" class="col-2 mb-0 mr-3">Автор:</label>
@@ -81,12 +82,14 @@
                     <option>Нет</option>
                     <option>Васнецов</option>
                 </select>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModal">+</button>
             </div>
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="mat" class="col-2 mb-0 mr-3">Материал:</label>
                 <select name="mat" id="mat" class="col-4 form-control">
                     <option>Холст</option>
                 </select>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModal">+</button>
             </div>
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="paint" class="col-2 mb-0 mr-3">Краски:</label>
@@ -95,6 +98,7 @@
                     <option>Акварель</option>
                     <option>Гуашь</option>
                 </select>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModal">+</button>
             </div>
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="size" class="col-2 mb-0 mr-3">Размер:</label>
@@ -102,6 +106,7 @@
                     <option>40x40см</option>
                     <option>40x60см</option>
                 </select>
+                <button class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModal">+</button>
             </div>
             <button type="submit" class="mt-4 btn btn-primary">Сохранить</button>
         </form>
@@ -132,5 +137,30 @@
 <footer>
 
 </footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Создать элемент</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ml-md-4 mr-md-4 row mb-3 justify-content-center">
+                    <label for="naming" class="d-inline-flex col-auto mb-0 mr-3 align-items-center">Название:</label>
+                    <input id="naming" type="text" class="form-control col-auto" placeholder="Введите название" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
