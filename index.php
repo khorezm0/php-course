@@ -82,19 +82,19 @@ $page_title = "СарИсскуство";
             [
                 "image" => "/coursephp/images/shop/i0000000001.jpg",
                 "name" => "Гранат",
-                "category" => "холст / масло / 40x40см",
+                "tags" => "холст / масло / 40x40см",
                 "price" => 1000
             ],
             [
                 "image" => "/coursephp/images/shop/i0000000002.jpg",
                 "name" => "Гранат",
-                "category" => "холст / масло / 40x40см",
+                "tags" => "холст / масло / 40x40см",
                 "price" => 1000
             ],
             [
                 "image" => "/coursephp/images/shop/i0000000003.jpg",
                 "name" => "Гранат",
-                "category" => "холст / масло / 40x40см",
+                "tags" => "холст / масло / 40x40см",
                 "price" => 1000
             ],
         ],"") ?>

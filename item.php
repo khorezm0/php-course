@@ -4,6 +4,7 @@ require_once 'back/page-settings.php';
 require_once 'back/header.php';
 require_once 'back/shop-list.php';
 require_once 'back/footer.php';
+require_once 'back/db.php';
 
 $page_title = "СарИсскуство";
 

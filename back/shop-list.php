@@ -18,7 +18,7 @@
                                 <div class="image" style="background-image: url('<?=$el['image']?>')">
                                 </div>
                                 <p class="item-title"><?=$el['name']?></p>
-                                <p class="text-info"><?=$el['category']?></p>
+                                <p class="text-info"><?=$el['tags']?></p>
                                 <span class="price"><?=$el['price']?> руб</span>
 
                                 <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>

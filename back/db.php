@@ -30,12 +30,29 @@ function getItem($id){
 
     if($result){
         $rows = [];
-        while($rows[] = mysqli_fetch_assoc($result));
-        array_pop($rows);  // pop the last row off, which is an empty row
+        while($row = mysql_fetch_assoc($result)){
+            $row['tags'] = $row['category'] . " / " . $row['genre'] . " / " . $row['style'] . " / " . $row['material']. " / " . $row['size'] ;
+            $rows[] = $row;
+        }
         return $rows;
     }
 
     return 0;
 }
 
-?>
+function getItemImages($id){
+    $result = mysql_query("
+    SELECT 
+    `id`,
+    `url`
+    FROM `item_image` WHERE `item_id` = $id 
+    ");
+
+    if($result){
+        $rows = [];
+        while($rows[] = mysql_fetch_assoc($result));
+        return $rows;
+    }
+
+    return 0;
+}
