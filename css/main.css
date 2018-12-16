@@ -203,9 +203,13 @@ header .btn-link .link-ico{
     color: #272727;
 }
 .regular-list-item .price{
-    color: red;
-    font-weight: 500;
+    color: #e60000;
+    font-weight: 400;
     float: right;
+}
+
+.auto-shop-list .regular-list-inner{
+    height: auto;
 }
 
 /* misc */
@@ -277,4 +281,23 @@ footer{
 .upload-button:hover,
 .item-image:hover + .upload-button{
     opacity: 1;
+}
+
+.item-page .image-item {
+    padding: 10px;
+    flex-grow: 1;
+    max-height: 512px;
+}
+
+
+/*----------SEARCH PAGE-----------------*/
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
