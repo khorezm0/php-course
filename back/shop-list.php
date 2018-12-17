@@ -13,7 +13,7 @@
                     foreach ($arr as &$el) {
 
                         ?>
-                        <a href="#" class="col">
+                        <a href="<?='item.php?id='.$el['id']?>" class="col">
                             <div class="regular-list-item">
                                 <div class="image" style="background-image: url('<?=$el['image']?>')">
                                 </div>

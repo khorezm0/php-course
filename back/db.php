@@ -19,6 +19,7 @@ function getItem($id){
     SELECT 
     `id`,
     `name`,
+    `price`,
     (SELECT `name` FROM `category` WHERE `id` = `category_id`) AS category,
     (SELECT `name` FROM `genre` WHERE `id` = `genre_id`) AS genre,
     (SELECT `name` FROM `style` WHERE `id` = `style_id`) AS style,
@@ -31,7 +32,7 @@ function getItem($id){
     if($result){
         $rows = [];
         while($row = mysql_fetch_assoc($result)){
-            $row['tags'] = $row['category'] . " / " . $row['genre'] . " / " . $row['style'] . " / " . $row['material']. " / " . $row['size'] ;
+            $row['tags'] = $row['category'] . " / " . $row['style'] . " / " . $row['genre'] . " / " . $row['material']. " / " . $row['size'] ;
             $rows[] = $row;
         }
         return $rows;
@@ -51,6 +52,7 @@ function getItemImages($id){
     if($result){
         $rows = [];
         while($rows[] = mysql_fetch_assoc($result));
+        array_pop($rows);
         return $rows;
     }
 

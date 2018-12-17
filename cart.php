@@ -5,7 +5,7 @@ require_once 'back/header.php';
 require_once 'back/shop-list.php';
 require_once 'back/footer.php';
 
-$page_title = "Галлерея";
+$page_title = "СарИсскуство";
 
 ?>
 
@@ -17,12 +17,11 @@ $page_title = "Галлерея";
 
 <body class="main-page">
 
-    <? renderTop(); ?>
+<? renderTop(); ?>
 
-    <div class="content container">
+<div class="content container">
 
-
-    <? shopList("&#x1F525; Популярные:",[
+    <? shopList("Корзина:",[
         [
             "id" => 1,
             "image" => "/coursephp/images/shop/i0000000001.jpg",
@@ -44,34 +43,9 @@ $page_title = "Галлерея";
             "tags" => "холст / масло / 40x40см",
             "price" => 1000
         ],
-    ],"auto-shop-list") ?>
+    ],"") ?>
 
-
-    <? shopList("Холст / Масло:",[
-        [
-            "id" => 1,
-            "image" => "/coursephp/images/shop/i0000000001.jpg",
-            "name" => "Гранат",
-            "tags" => "холст / масло / 40x40см",
-            "price" => 1000
-        ],
-        [
-            "id" => 1,
-            "image" => "/coursephp/images/shop/i0000000002.jpg",
-            "name" => "Гранат",
-            "tags" => "холст / масло / 40x40см",
-            "price" => 1000
-        ],
-        [
-            "id" => 1,
-            "image" => "/coursephp/images/shop/i0000000003.jpg",
-            "name" => "Гранат",
-            "tags" => "холст / масло / 40x40см",
-            "price" => 1000
-        ],
-    ],"auto-shop-list") ?>
-
-    </div>
+</div>
 
 <? renderBottom(); ?>
 

@@ -56,8 +56,8 @@ function renderTop()
                     <!--Mobile-->
                     <div class="col-4 d-md-none"></div>
                     <div class="col d-md-none flex-end-align">
-                        <button class="btn btn-outline-light header-btn"><i class="material-icons">search</i></button>
-                        <button class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></button>
+                        <a href="search.php" class="btn btn-outline-light header-btn"><i class="material-icons">search</i></a>
+                        <a href="cart.php" class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></a>
                     </div>
                 </div>
                 <div class="row d-none d-md-flex d-lg-flex">
@@ -65,8 +65,8 @@ function renderTop()
                     <div class="col"><a href="/coursephp/gallery.php" class="btn btn-outline-light outl-btn-disbaled">Галерея</a></div>
                     <!--<div class="col-sm"><a href="/coursephp/gallery.php" class="btn btn-outline-light outl-btn-disbaled">Заказ</a></div>-->
                     <div class="col-sm header-menu-btns">
-                        <button class="btn btn-outline-light header-btn"><i class="material-icons">search</i></button>
-                        <button class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></button>
+                        <a href="search.php" class="btn btn-outline-light header-btn"><i class="material-icons">search</i></a>
+                        <a href="cart.php" class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></a>
                     </div>
 
                 </div>
