@@ -15,8 +15,7 @@ $images = [];
 $__id = parseGet($_GET['id']);
 
 if($__id){
-    $dataArr = getItem($__id);
-    if($dataArr && count($dataArr) > 0) $data = $dataArr[0];
+    $data = getItem($__id);
     $images = getItemImages($__id);
 }
 

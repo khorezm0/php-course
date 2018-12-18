@@ -22,41 +22,34 @@ function getItem($id){
     `id`,
     `name`,
     `price`,
+    `category_id`,
+    `style_id`,
+    `material_id`,
+    `size_id`,
+    `style_id`,
+    `author_id`,
+    `genre_id`,
     (SELECT `name` FROM `category` WHERE `id` = `category_id`) AS category,
     (SELECT `name` FROM `genre` WHERE `id` = `genre_id`) AS genre,
     (SELECT `name` FROM `style` WHERE `id` = `style_id`) AS style,
     (SELECT `name` FROM `material` WHERE `id` = `material_id`) AS material,
     (SELECT `name` FROM `size` WHERE `id` = `size_id`) AS size,
     (SELECT `name` FROM `author` WHERE `id` = `author_id`) AS author
-    FROM `items` WHERE `id` = $id 
+    
+    FROM `items` WHERE `id` = '$id'
     ");
 
     if($result){
-        $rows = [];
-        while($row = mysql_fetch_assoc($result)){
-            $row['tags'] = $row['category'] . " / " . $row['style'] . " / " . $row['genre'] . " / " . $row['material']. " / " . $row['size'] ;
-            $rows[] = $row;
-        }
-        return $rows;
+        $row = mysql_fetch_assoc($result);
+        $row['tags'] = $row['category'] . " / " . $row['style'] . " / " . $row['genre'] . " / " . $row['material']. " / " . $row['size'] ;
+        return $row;
     }
 
     return 0;
 }
 
 function getItemImages($id){
-    $result = mysql_query("
-    SELECT 
-    `id`,
-    `url`
-    FROM `item_image` WHERE `item_id` = $id 
-    ");
-
-    if($result){
-        $rows = [];
-        while($rows[] = mysql_fetch_assoc($result));
-        array_pop($rows);
-        return $rows;
-    }
-
-    return 0;
+    $item = parseGet($id);
+    $res = mysql_query("SELECT * FROM item_image WHERE item_id = '$item'");
+    return getArrByRes($res);
 }
