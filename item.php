@@ -1,11 +1,12 @@
 <?php
 
-require_once 'back/page-settings.php';
 require_once 'back/header.php';
+require_once 'back/page-settings.php';
 require_once 'back/shop-list.php';
 require_once 'back/footer.php';
 require_once 'back/db.php';
 require_once 'back/utils.php';
+require_once 'back/users.php';
 
 $page_title = "СарИсскуство";
 
@@ -64,11 +65,16 @@ if($__id){
                 </p>
                 <br/>
                 <p class="row">
-                    <a href="#" class="btn btn-primary btn-lg" role="button">Купить</a>
-                    <span style="padding-right: 10px;"> </span>
-                    <a href="#" class="btn btn-secondary btn-lg d-inline-flex" role="button">
-                        <i class="material-icons" style="padding-right: 4px;">shopping_cart</i>
-                        В корзину
+                    <!--<a href="#" class="btn btn-primary btn-lg" role="button">Купить</a>
+                    <span style="padding-right: 10px;"> </span>-->
+                    <a href="cart.php?add=<?=$data["id"]?>" class="btn btn-secondary btn-lg d-inline-flex" role="button">
+                        <? if(!isInCart($data['id'], $_SESSION['id'])){ ?>
+                            <i class="material-icons" style="padding-right: 4px;">shopping_cart</i>
+                            В корзину
+                        <?} else {?>
+                            <i class="material-icons" style="padding-right: 4px;">remove_shopping_cart</i>
+                            Убрать из корзины
+                        <? } ?>
                     </a>
                 </p>
             </div>

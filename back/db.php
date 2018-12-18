@@ -1,9 +1,11 @@
 <?php
 
+session_start();
+
 $db_host = "localhost";
 $db_user = "root";
 $db_password = "";
-$db_name = "phpshop";
+$db_name = "artShop";
 
 $__mysql_link = mysql_connect($db_host, $db_user, $db_password);
 $__is_db_selected = mysql_select_db($db_name);

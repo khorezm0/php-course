@@ -9,4 +9,8 @@ function parseGet($data)
     }
 }
 
+function getAllCategories(){
+
+}
+
 ?>

@@ -1,6 +1,12 @@
 <?php
+
+    require_once "users.php";
+
     function shopList($title,$arr,$list_class)
     {
+
+        $user = $_SESSION['id'];
+
     ?>
 
         <div class="container-fluid regular-list <?=$list_class?>">
@@ -13,19 +19,22 @@
                     foreach ($arr as &$el) {
 
                         ?>
-                        <a href="<?='item.php?id='.$el['id']?>" class="col">
+                        <div class="col">
                             <div class="regular-list-item">
-                                <div class="image" style="background-image: url('<?=$el['image']?>')">
-                                </div>
-                                <p class="item-title"><?=$el['name']?></p>
+                                <a href="<?='item.php?id='.$el['id']?>" class="image" style="background-image: url('<?=$el['image']?>')"></a>
+                                <a href="<?='item.php?id='.$el['id']?>" class="item-title"><?=$el['name']?></a>
                                 <p class="text-info"><?=$el['tags']?></p>
                                 <span class="price"><?=$el['price']?> руб</span>
 
-                                <span class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></span>
-                                <span class="item-icon read-more-btn"><i
-                                        class="material-icons">arrow_forward_ios</i></span>
+                                <? if(isInCart($el['id'], $user)){ ?>
+                                    <a href="<?='cart.php?rem='.$el['id']?>" class="item-icon cart-btn"><i class="material-icons">remove_shopping_cart</i></a>
+                                <? } else { ?>
+                                    <a href="<?='cart.php?add='.$el['id']?>" class="item-icon cart-btn"><i class="material-icons">shopping_cart</i></a>
+                                <? } ?>
+                                <a href="<?='item.php?id='.$el['id']?>" class="item-icon read-more-btn"><i
+                                        class="material-icons">arrow_forward_ios</i></a>
                             </div>
-                        </a>
+                        </div>
                         <?
                     }
 

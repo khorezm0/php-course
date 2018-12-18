@@ -1,4 +1,1 @@
-<?
-    $page_title = "Title";
-    
-?>
+<?$page_title = "Title";?>

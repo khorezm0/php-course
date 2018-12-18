@@ -1,8 +1,7 @@
-
 <?php
 
 require_once 'page-settings.php';
-
+require_once 'users.php';
 
 function renderHeader()
 {
@@ -19,6 +18,7 @@ function renderHeader()
 
     <script src="/coursephp/js/jquery.min.js"></script>
     <script src="/coursephp/js/popper.min.js"></script>
+    <script src="/coursephp/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/coursephp/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/coursephp/css/bootstrap.min.css">
     <link rel="stylesheet" href="/coursephp/css/bootstrap-grid.min.css">
@@ -43,14 +43,23 @@ function renderTop()
                 <div class="row header-upper-column">
                     <div class="col-2 page-title">SarИсскуство</div>
 
-                    <!--PC and Tablet-->
                     <div class="col-6 d-none d-md-block d-lg-block"></div>
-                    <button class="col-sm btn btn-link d-none d-md-block d-lg-block">
-                        <i class="material-icons link-ico">face</i> Login
-                    </button>
-                    <button class="col-sm btn btn-link d-none d-md-block d-lg-block">
-                        <i class="material-icons link-ico">perm_identity</i> Register
-                    </button>
+                    <!--PC and Tablet-->
+
+                    <? if(!isLogined()){ ?>
+                        <a href="login.php" class="col-sm btn btn-link d-none d-md-block d-lg-block">
+                            <i class="material-icons link-ico">face</i> Войти
+                        </a>
+                        <a href="login.php?reg" class="col-sm btn btn-link d-none d-md-block d-lg-block">
+                            <i class="material-icons link-ico">perm_identity</i> Регистрация
+                        </a>
+                    <? } else{ ?>
+                        <a href="#" class="col-sm btn btn-link d-none d-md-block d-lg-block"></a>
+                        <a href="login.php?logout" class="col-sm btn btn-link d-none d-md-block d-lg-block">
+                            <i class="material-icons link-ico">face</i> Выйти
+                        </a>
+                    <? } ?>
+
                     <div class="col-sm d-none d-md-block d-lg-block"></div>
 
                     <!--Mobile-->

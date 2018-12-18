@@ -157,6 +157,7 @@ header .btn-link .link-ico{
     height: 256px;
     background: url("../images/shop/i0000000001.jpg") no-repeat center;
     background-size: contain;
+    display: block;
 }
 .regular-list-item .item-title{
     font-size: 16px;
