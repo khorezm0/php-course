@@ -1,63 +1,24 @@
+<?php
+
+require_once 'back/page-settings.php';
+require_once 'back/header.php';
+require_once 'back/shop-list.php';
+require_once 'back/footer.php';
+require_once 'back/users.php';
+
+$page_title = "СарИсскуство";
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>СарИсскуство</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/medias.css">
-
-    <script src="js/bootstrap.min.js"></script>
-
+    <? renderHeader(); ?>
 </head>
+
 <body class="main-page">
-<header class="container-fluid">
-    <div class="row">
-        <div class="col-2 logo-col"><img src="images/icon.png"></div>
-        <div class="col-10">
-            <div class="row header-upper-column">
-                <div class="col-2 page-title">SarИсскуство</div>
 
-                <!--PC and Tablet-->
-                <div class="col-6 d-none d-md-block d-lg-block"></div>
-                <button class="col-sm btn btn-link d-none d-md-block d-lg-block">
-                    <i class="material-icons link-ico">face</i> Login
-                </button>
-                <button class="col-sm btn btn-link d-none d-md-block d-lg-block">
-                    <i class="material-icons link-ico">perm_identity</i> Register
-                </button>
-                <div class="col-sm d-none d-md-block d-lg-block"></div>
-
-                <!--Mobile-->
-                <div class="col-4 d-md-none"></div>
-                <div class="col d-md-none flex-end-align">
-                    <button class="btn btn-outline-light header-btn"><i class="material-icons">search</i></button>
-                    <button class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></button>
-                </div>
-            </div>
-            <div class="row d-none d-md-flex d-lg-flex">
-                <div class="col-sm"><a href="index.html" class="btn btn-outline-light">Домашняя</a></div>
-                <div class="col-sm"><button class="btn btn-outline-light outl-btn-disbaled">Галерея</button></div>
-                <div class="col-sm"><button class="btn btn-outline-light outl-btn-disbaled">Заказ</button></div>
-                <div class="col-sm header-menu-btns">
-                    <button class="btn btn-outline-light header-btn"><i class="material-icons">search</i></button>
-                    <button class="btn btn-outline-light header-btn"><i class="material-icons">shopping_cart</i></button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</header>
+<? renderTop(); ?>
 
 <div class="content container">
     <div class="flex-wrap mb-md-5 my-5 row">
@@ -134,10 +95,7 @@
     </div>
 </div>
 
-<footer>
-
-</footer>
-
+<? renderBottom(); ?>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
