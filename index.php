@@ -78,7 +78,7 @@ $page_title = "СарИсскуство";
             </a>
         </div>
 
-        <? shopList("Результаты:",[
+        <? shopList("&#x1F525; Популярные:",[
             [
                 "id" => 1,
                 "image" => "/coursephp/images/shop/i0000000001.jpg",

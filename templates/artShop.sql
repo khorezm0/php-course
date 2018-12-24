@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 18 2018 г., 04:03
+-- Время создания: Дек 24 2018 г., 21:33
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -39,7 +39,8 @@ CREATE TABLE `author` (
 --
 
 INSERT INTO `author` (`id`, `name`, `info`) VALUES
-(1, 'Каспина Ирина', 'Каспина Ирина родилась в г.Ставрополе 27 сентября 1973 года. \r\nВ 1995 году окончила Ставропольское художественное училище по специальности живопись.\r\nУчастница городских выставок в Ставрополе 1999, во Франции в 2007-2008 в г. Макон и Лион, Ростов-на-Дону март 2011, Ставрополь Союз художников декабрь 2015 Рождественская выставка');
+(1, 'Каспина Ирина', 'Каспина Ирина родилась в г.Ставрополе 27 сентября 1973 года. \r\nВ 1995 году окончила Ставропольское художественное училище по специальности живопись.\r\nУчастница городских выставок в Ставрополе 1999, во Франции в 2007-2008 в г. Макон и Лион, Ростов-на-Дону март 2011, Ставрополь Союз художников декабрь 2015 Рождественская выставка'),
+(2, 'Андрей Большаков', '');
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `item_id`, `count`) VALUES
-(4, 1, 1, 1);
+(7, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,29 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'живопись');
+(1, 'Живопись');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `employee`
+--
+
+CREATE TABLE `employee` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `password` text NOT NULL,
+  `mail` text NOT NULL,
+  `role` int(11) NOT NULL,
+  `birthdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `employee`
+--
+
+INSERT INTO `employee` (`id`, `name`, `password`, `mail`, `role`, `birthdate`) VALUES
+(1, 'Root', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'root@a.ru', 1, '1999-05-14');
 
 -- --------------------------------------------------------
 
@@ -95,7 +118,8 @@ CREATE TABLE `genre` (
 --
 
 INSERT INTO `genre` (`id`, `name`) VALUES
-(1, 'натюрморт');
+(1, 'Натюрморт'),
+(2, 'Пейзаж');
 
 -- --------------------------------------------------------
 
@@ -157,7 +181,7 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id`, `name`) VALUES
-(1, 'холст');
+(1, 'Холст');
 
 -- --------------------------------------------------------
 
@@ -202,7 +226,9 @@ CREATE TABLE `size` (
 --
 
 INSERT INTO `size` (`id`, `name`) VALUES
-(1, '40х40см');
+(1, '40х40см'),
+(2, '50x50см'),
+(4, '80x80см');
 
 -- --------------------------------------------------------
 
@@ -220,7 +246,7 @@ CREATE TABLE `style` (
 --
 
 INSERT INTO `style` (`id`, `name`) VALUES
-(1, 'постмодернизм');
+(1, 'Постмодернизм');
 
 -- --------------------------------------------------------
 
@@ -241,7 +267,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `password`, `mail`, `avatar`) VALUES
-(1, 'admin', '1234', 'root@a.ru', '');
+(1, 'admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'root@a.ru', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -263,6 +289,12 @@ ALTER TABLE `cart`
 -- Индексы таблицы `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `employee`
+--
+ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -327,13 +359,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `author`
 --
 ALTER TABLE `author`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `category`
@@ -342,10 +374,16 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT для таблицы `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `items`
@@ -381,7 +419,7 @@ ALTER TABLE `orders_items`
 -- AUTO_INCREMENT для таблицы `size`
 --
 ALTER TABLE `size`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `style`

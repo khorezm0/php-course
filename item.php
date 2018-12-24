@@ -53,7 +53,9 @@ if($__id){
                 <div class="row">
                     <h1><?=$data['name']?></h1>
                 </div>
-                <br>
+                <? if($_SESSION['isAdmin']) { ?>
+					<p class="row"><a href="item-edit.php?id=<?=$__id?>" class="btn-link">Изменить</a></p>
+                <? } ?>
                 <p class="text-body row"></p>
                 <p class="text-info row"><?=$data['tags']?></p>
                 <p class="font-weight-light row">Автор: <?=$data['author']?></p>

@@ -16,6 +16,14 @@ $errType = "success";
 $errName = "Error";
 $errText = "Login error!";
 $username = "";
+$isAdminLogin = isset($_GET['admin']);
+
+if(isset($_GET['needAuth'])){
+	$isError = true;
+	$errType = "warning";
+	$errName = "Ошибка!";
+	$errText = "Войдите \n для доступа к странице!";
+}
 
 if($logout){
     saveHeaders(0, 0, true);
@@ -46,7 +54,7 @@ if($_POST['type']){
             $errText = "Теперь, войдите в свой аккаунт.";
         }
     } else {
-        $r = login($_POST['mail'], $_POST['password']);
+        $r = login($_POST['mail'], $_POST['password'], isset($_POST['admin']));
         if($r == -1){
             $reg = false;
             $isError = true;
@@ -54,7 +62,8 @@ if($_POST['type']){
             $errName = "Ошибка!";
             $errText = "Пользователь не найден.";
         }else {
-            saveHeaders($r, true, false);
+			if(isset($_POST['admin'])) saveHeaders($r, false, false);
+			else saveHeaders($r, true, false);
             header("Location: index.php");
             die();
         }
@@ -89,10 +98,10 @@ if(isLogined()){
 
     <div class="wrapper">
         <form class="form-signin" method="post">
-
+			
             <? if($isError) { ?>
                 <div class="alert alert-<?=$errType?>" role="alert">
-                    <strong><?=$errName?></strong> <?=$errText?>
+                    <strong><?=$errName?></strong> <br/> <?=$errText?>
                 </div>
             <? } ?>
 
@@ -109,11 +118,15 @@ if(isLogined()){
 
                 <? } else { ?>
 
-                    <h2 class="form-signin-heading">Вход</h2>
+                    <h2 class="form-signin-heading"><?=($isAdminLogin) ? ("Администрация") : ("Вход")?></h2>
+                    <? if($isAdminLogin){ ?>
+						<input type="hidden" name="admin">
+                    <? } ?>
                     <input type="hidden" name="type" value="log" />
                     <input type="email" class="form-control" name="mail" placeholder="Почта" required="" autofocus="" />
                     <input type="password" class="form-control" name="password" placeholder="Пароль" required=""/>
                     <button class="btn btn-lg btn-success btn-block" type="submit">Войти</button>
+                    <!--<a href="login.php?admin" class="d-block text-center mt-2 small">Администрация</a>-->
                 <? } ?>
             <?} else {?>
                 <h2 class="form-signin-heading text-center"><?=$username?></h2>

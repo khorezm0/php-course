@@ -15,7 +15,7 @@
                 <div class="container-fluid flex-wrap">
 
                     <?
-
+					if($arr)
                     foreach ($arr as &$el) {
 
                         ?>

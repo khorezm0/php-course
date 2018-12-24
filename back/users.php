@@ -3,14 +3,17 @@
 require_once "db.php";
 require_once "utils.php";
 
-function login($_mail, $_passw){
+function login($_mail, $_passw, $isAdmin){
 
     $mail = parseGet($_mail);
-    $passw = parseGet($_passw);
+    $passw = getHash(parseGet($_passw));
 
     if($mail && $passw){
-
-        $res = mysql_query("SELECT id FROM user WHERE mail = '$mail' AND password = '$passw'");
+		if(!$isAdmin){
+			$res = mysql_query("SELECT id FROM user WHERE mail = '$mail' AND password = '$passw'");
+        }else{
+			$res = mysql_query("SELECT id FROM employee WHERE mail = '$mail' AND password = '$passw'");
+        }
         if($res && ($u = mysql_fetch_assoc($res))){
             return $u["id"];
         }
@@ -22,7 +25,7 @@ function login($_mail, $_passw){
 
 function register($_mail, $_name, $_passw){
     $mail = parseGet($_mail);
-    $passw = parseGet($_passw);
+    $passw = getHash(parseGet($_passw));
     $name = parseGet($_name);
     if($mail && $passw && $name){
         $res = mysql_query("SELECT id FROM user WHERE mail = '$mail'");
@@ -63,10 +66,12 @@ function getUser($_id){
 function saveHeaders($id, $isUser, $logout){
     if($logout){
         unset($_SESSION['isUser']);
+        unset($_SESSION['isAdmin']);
         unset($_SESSION['id']);
     }
     else{
         $_SESSION['isUser'] = $isUser;
+        $_SESSION['isAdmin'] = !$isUser;
         $_SESSION['id'] = $id;
     }
 }

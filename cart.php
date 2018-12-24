@@ -7,6 +7,10 @@ require_once 'back/users.php';
 
 $page_title = "СарИсскуство";
 
+if(!isLogined()){
+	header("Location: login.php?needAuth");
+}
+
 $add = $_GET['add'];
 $rem = $_GET['rem'];
 
