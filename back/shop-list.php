@@ -2,8 +2,16 @@
 
     require_once "users.php";
 
-    function shopList($title,$arr,$list_class)
+    function shopList($title,$arr,$list_class){
+        shopListWithButton($title, $arr, $list_class, FALSE);
+    }
+
+    function shopListWithButton($title,$arr,$list_class,$isCart)
     {
+       if($isCart) {
+           global $totalSum;
+           global $totalCount;
+       }
 
         $user = $_SESSION['id'];
 
@@ -39,8 +47,29 @@
                     }
 
                     ?>
-
                 </div>
+
+                <? if($isCart){
+                    ?>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item active p-4 text-center" aria-current="page">
+                                <h5 class="font-weight-bold"><?=$totalCount?> товаров на сумму <?=$totalSum?></h5>
+                                <br>
+                                <form method="post" action="/coursephp/back/order.php?make">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Адрес</label>
+                                        <textarea  name="address" required minlength="10" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <button  type="submit" class="btn btn-primary">Оформить</button>
+                                </form>
+                                <br>
+                                <span class="font-weight-light h6 mt-2 d-block" style="font-size: 11px;">Нажимая на кнопку «Оформить», вы принимаете условия Публичной оферты</span>
+                            </li>
+                        </ol>
+                    </nav>
+                <? }?>
+
             </div>
         </div>
 

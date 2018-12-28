@@ -110,6 +110,33 @@ function getCart(){
     }
     return 0;
 }
+function getMinCart(){
+    $id = $_SESSION['id'];
+    if($id){
+        $res = mysql_query("
+        SELECT 
+        cart.id AS cartId,
+        cart.item_id AS id,
+        name,
+        price,
+        cart.count
+        FROM `cart`
+        INNER JOIN items ON items.id = cart.item_id
+        WHERE cart.user_id = $id
+        ");
+
+        if($res){
+            $cart = [];
+            while ($row = mysql_fetch_assoc($res)){
+                $cart[] = $row;
+            }
+            return $cart;
+        }else{
+            echo mysql_error();
+        }
+    }
+    return 0;
+}
 
 function addCart($_item){
     $item = parseGet($_item);
@@ -144,6 +171,20 @@ function remCart($_item){
     $user = $_SESSION["id"];
     if($item && $user){
         $res = mysql_query("DELETE FROM cart WHERE item_id = '$item' AND user_id = $user;");
+        if($res){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    return 0;
+}
+
+function clearCart(){
+    $user = $_SESSION["id"];
+    if($_SESSION['isUser'] && $user){
+        $res = mysql_query("DELETE FROM cart WHERE user_id = $user;");
         if($res){
             return 1;
         }else{

@@ -189,4 +189,24 @@ function getCond($arr){
     return $cond;
 }
 
+function getCartSummary(){
+    $arr = [];
+    if($_SESSION['isUser']){
+        $user = $_SESSION['id'];
+        $res = mysql_query("SELECT SUM(count) as sum FROM cart WHERE user_id = '$user'");
+        if($res){
+            $arr['count'] = mysql_fetch_assoc($res)['sum'];
+            $res = mysql_query("SELECT (SELECT price FROM items WHERE item_id = items.id) as price, count FROM cart WHERE user_id = '$user'");
+            $totalSum = 0;
+            if($res){
+                while ($row = mysql_fetch_assoc($res)){
+                    $totalSum += $row['count'] * $row['price'];
+                }
+                $arr['sum'] = $totalSum;
+            }
+        }
+    }
+    return $arr;
+}
+
 ?>

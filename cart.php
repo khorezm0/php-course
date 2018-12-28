@@ -4,15 +4,17 @@ require_once 'back/page-settings.php';
 require_once 'back/shop-list.php';
 require_once 'back/footer.php';
 require_once 'back/users.php';
+require_once 'back/utils.php';
 
 $page_title = "СарИсскуство";
 
-if(!isLogined()){
+if(!isLogined() || !$_SESSION['isUser']){
 	header("Location: login.php?needAuth");
 }
 
 $add = $_GET['add'];
 $rem = $_GET['rem'];
+
 
 if($add){
     addCart($add);
@@ -20,6 +22,10 @@ if($add){
 if($rem){
     remCart($rem);
 }
+
+$summary = getCartSummary();
+$totalCount = $summary['count'];
+$totalSum = number_format($summary['sum'], 0, ',', ' ') . " руб";
 
 ?>
 
@@ -35,7 +41,7 @@ if($rem){
 
 <div class="content container">
 
-    <? shopList("Корзина:", getCart() ,"") ?>
+    <? shopListWithButton("Корзина:", getCart() ,"", TRUE) ?>
 
 </div>
 
