@@ -19,10 +19,43 @@ $id = parseGet($_GET['id']);
 $isData = false;
 $data = [];
 
+$isSaved = false;
+$SavedStyle = "success";
+$SavedMessage = "";
+
+if($id && isset($_GET['edit'])){
+    $name = parseGet($_POST['name']);
+    $price = parseGet($_POST['price']);
+    $category = parseGet($_POST['category']);
+    $genre = parseGet($_POST['genre']);
+    $style = parseGet($_POST['style']);
+    $author = parseGet($_POST['author']);
+    $material = parseGet($_POST['material']);
+    $size = parseGet($_POST['size']);
+    $hidden = parseGet($_POST['hidden']);
+
+    if($name && isset($price) && $category && $genre && $style && $size && $material && isset($hidden) && $author &&
+        updateItem($id, $name, $price, $category, $genre, $style, $size, $material, $hidden, $author)){
+        $isSaved = true;
+        $SavedMessage = "Сохранение успешно!";
+    }else{
+        $isSaved = true;
+        $SavedMessage = "Ошибка сохранения! " . mysql_error();
+        $SavedStyle = "warning";
+    }
+}
+
 if($id){
     $data = getItem($id);
     $isData = $data && count($data) > 0;
 }
+
+if(!$id || !$isData){
+    $data = getNewItem();
+    header("Location: item-edit.php?id=".$data['id']);
+    die(mysql_error());
+}
+
 
 ?>
 
@@ -31,98 +64,9 @@ if($id){
 <head>
     <? renderHeader(); ?>
 
-    <script>
-		/*ADD*/
-        var type = "";
-        function clckAdd(typ) {
-            type = typ;
-        }
-        function addType(el) {
-            var naming = document.getElementById("naming").value;
-            var select = document.getElementById(type);
-            $.get( "back/admin.php?create="+encodeURIComponent(type)+"&value="+ encodeURIComponent(naming),
-                function( data ) {
-                    //$( ".result" ).html( data );
-                    console.log( "Load was performed. " + data);
-
-                    var op = document.createElement('option');
-                    op.value = data;
-                    op.innerText = naming;
-                    select.appendChild(op);
-                    
-                    document.getElementById("addStatus").style.display = "block";
-                    document.getElementById("addStatusText").innerText = "Готово";
-                    setTimeout(function(){ $("#createModal").modal("hide");document.getElementById("addStatus").style.display = "none"; }, 1000);
-                }
-            );
-            
-			document.getElementById("addStatus").style.display = "block";
-			document.getElementById("addStatusText").innerText = "Сохранение...";
-            console.log("SEND "+naming);
-        }
-        
-        /*EDIT OR DELETE*/
-        var editText = "";
-        var editValue = "";
-        
-		function clckEdit(typ) {
-            type = typ;
-            var select = document.getElementById(type);
-            var i = select.options.selectedIndex;
-            editText = select[i].text;
-            editValue = select[i].value;
-            document.getElementById("editNaming").value = editText;
-        }
-        
-        function editType(el) {
-            var naming = document.getElementById("editNaming").value;
-            var select = document.getElementById(type);
-            
-			var _editValue = editValue;
-            
-            $.get( "back/admin.php?type="+encodeURIComponent(type)+"&edit="+encodeURIComponent(_editValue)+"&value="+ encodeURIComponent(naming),
-                function( data ) {
-                    //$( ".result" ).html( data );
-                    console.log( "Load was performed. " + data);
-                    for(var i = 0;i<select.options.length;i++){
-						if(select.options[i].value == _editValue){
-							select.options[i].text = naming;
-						}
-                    }
-                    document.getElementById("editStatus").style.display = "block";
-                    document.getElementById("editStatusText").innerText = "Готово";
-                    setTimeout(function(){ $("#editModal").modal("hide");document.getElementById("editStatus").style.display = "none"; }, 1000);
-                }
-            );
-			document.getElementById("editStatus").style.display = "block";
-			document.getElementById("editStatusText").innerText = "Сохранение...";
-            console.log("SEND "+naming);
-        }
-        
-		function delType(el) {
-            var select = document.getElementById(type);
-			var _editValue = editValue;
-            
-            $.get( "back/admin.php?type="+encodeURIComponent(type)+"&del="+encodeURIComponent(_editValue),
-                function( data ) {
-                    //$( ".result" ).html( data );
-                    console.log( "Load was performed. " + data);
-                    for(var i = 0;i<select.options.length;i++){
-						if(select.options[i].value == _editValue){
-							select.options.remove(i);
-						}
-                    }
-                    document.getElementById("editStatus").style.display = "block";
-                    document.getElementById("editStatusText").innerText = "Готово";
-                    setTimeout(function(){ $("#editModal").modal("hide");document.getElementById("editStatus").style.display = "none"; }, 1000);
-                }
-            );
-			document.getElementById("editStatus").style.display = "block";
-			document.getElementById("editStatusText").innerText = "Сохранение...";
-            console.log("SEND "+naming);
-        }
-        
-    </script>
+    <script> var itemId = '<?=$id?>'; </script>
+    <script src="js/item-editing-modals.js"></script>
+    <script src="js/item-image-uploader.js"></script>
 
 </head>
 
@@ -131,14 +75,29 @@ if($id){
 <? renderTop(); ?>
 
 <div class="content container">
+    <? if($isSaved) { ?>
+        <div class="alert alert-<?=$SavedStyle?>" role="alert">
+            <strong><?=$SavedMessage?></strong>
+        </div>
+    <? } ?>
     <div class="flex-wrap mb-md-5 my-5 row">
-        <form class="col admin-form">
-             
-            <h3 class="mb-3"><?=($isData) ? ("Редактирование предмета: #" . strval($data['id'])) : ("Новый элемент") ?></h3>
+        <form class="col admin-form" action="item-edit.php?id=<?=$data['id']?>&edit" method="post">
+            <h3 class="mb-3"><?="Предмет #" . strval($data['id'])?></h3>
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="name" class="col-2 mb-0 mr-3">Название:</label>
-                <input id="name" type="text" class="form-control col-4" placeholder="Введите название" value="<?=$data['name']?>" />
+                <input id="name" name="name" type="text" class="form-control col-4" placeholder="Введите название" value="<?=$data['name']?>" />
             </div>
+
+            <div class="ml-md-4 mr-md-4 row mb-3">
+                <label for="price" class="col-2 mb-0 mr-3">Цена:</label>
+                <input id="price" name="price" type="number" class="form-control col-4" placeholder="Сумма" value="<?=$data['price']?>" />
+            </div>
+
+            <div class="ml-md-4 mr-md-4 row mb-3">
+                <label for="size" class="col-2 mb-0 mr-3">Размер:</label>
+                <input id="size" name="size" type="text" class="form-control col-4" placeholder="Размер" value="<?=$data['size']?>" />
+            </div>
+
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="category" class="col-2 mb-0 mr-3">Категория:</label>
                 <select name="category" id="category" class="col-4 form-control">
@@ -149,6 +108,7 @@ if($id){
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#editModal" onclick="clckEdit('category')"><i class="material-icons">edit</i></button>
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#createModal" onclick="clckAdd('category')"><i class="material-icons">add</i></button>
             </div>
+
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="genre" class="col-2 mb-0 mr-3">Жанр:</label>
                 <select name="genre" id="genre" class="col-4 form-control">
@@ -159,6 +119,7 @@ if($id){
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#editModal" onclick="clckEdit('genre')"><i class="material-icons">edit</i></button>
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#createModal" onclick="clckAdd('genre')"><i class="material-icons">add</i></button>
             </div>
+
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="style" class="col-2 mb-0 mr-3">Стиль:</label>
                 <select name="style" id="style" class="col-4 form-control">
@@ -169,6 +130,7 @@ if($id){
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#editModal" onclick="clckEdit('style')"><i class="material-icons">edit</i></button>
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#createModal" onclick="clckAdd('style')"><i class="material-icons">add</i></button>
             </div>
+
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="author" class="col-2 mb-0 mr-3">Автор:</label>
                 <select name="author" id="author" class="col-4 form-control">
@@ -179,6 +141,7 @@ if($id){
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#editModal" onclick="clckEdit('author')"><i class="material-icons">edit</i></button>
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#createModal" onclick="clckAdd('author')"><i class="material-icons">add</i></button>
             </div>
+
             <div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="material" class="col-2 mb-0 mr-3">Материал:</label>
                 <select name="material" id="material" class="col-4 form-control">
@@ -189,15 +152,13 @@ if($id){
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#editModal" onclick="clckEdit('material')"><i class="material-icons">edit</i></button>
                 <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#createModal" onclick="clckAdd('material')"><i class="material-icons">add</i></button>
             </div>
+
             <div class="ml-md-4 mr-md-4 row mb-3">
-                <label for="size" class="col-2 mb-0 mr-3">Размер:</label>
-                <select name="size" id="size" class="col-4 form-control">
-                    <? foreach (getSizes() as $r) { ?>
-                        <option <?=($isData && $data['size_id'] == $r['id']) ? "selected" : ""?> value="<?=$r["id"]?>" ><?=$r['name']?></option>
-                    <? } ?>
+                <label for="visibility" class="col-2 mb-0 mr-3">Видимость:</label>
+                <select name="hidden" id="visibility" class="col-4 form-control">
+                    <option value="0">Видимый</option>
+                    <option value="1">Скрыт</option>
                 </select>
-                <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#editModal" onclick="clckEdit('size')"><i class="material-icons">edit</i></button>
-                <button class="btn btn-link d-inline-flex" type="button" data-toggle="modal" data-target="#createModal" onclick="clckAdd('size')"><i class="material-icons">add</i></button>
             </div>
             <!--<div class="ml-md-4 mr-md-4 row mb-3">
                 <label for="paint" class="col-2 mb-0 mr-3">Краски:</label>
@@ -209,20 +170,25 @@ if($id){
                 <button class="btn btn-link" type="button" data-toggle="modal" data-target="#exampleModal">+</button>
             </div>-->
             <button type="submit" class="mt-4 btn btn-primary">Сохранить</button>
+            <a href="item.php?id=<?=$data['id']?>" class="mt-4 btn btn-link">Просмотр</a>
         </form>
     </div>
     <div class="row flex-grow-1 flex-wrap flex-column mb-4">
         <h3 class="mb-3">Изображения</h3>
-        <div class="row flex-grow-1 justify-content-center">
-            <div class="col-auto justify-content-center d-flex position-relative mb-2">
+        <div id="imgs-uploaded-alert" class="alert alert-success" role="alert" style="display: none;">
+            <strong>Изображения загружены, сохраните изменения выше.</strong>
+        </div>
+        <div class="row flex-grow-1 justify-content-center item-images-list">
+            <div id="images-upload" class="col-auto justify-content-center d-flex position-relative mb-2">
                 <img src="images/150.png" class="item-image"/>
                 <label for="img" class="position-absolute fixed-bottom text-center upload-button">Загрузить</label>
-                <input id="img" style="visibility: hidden;position: absolute;" type="file">
+                <input id="img" style="visibility: hidden;position: absolute;" type="file" name="images[]" multiple max="" >
+                <img id="img-loader" src="images/loader.gif" class="loader-absolute-center" style="display: none">
             </div>
             <? foreach (getItemImages($id) as $i){ ?>
-                <div class="col-auto justify-content-center d-flex position-relative mb-2">
+                <div class="col-auto justify-content-center position-relative mb-2" id="img-<?=$i['id']?>">
                     <img src="<?=$i['url']?>" class="item-image"/>
-                    <div class="position-absolute fixed-bottom text-center delete-button">Удалить</div>
+                    <div class="position-absolute fixed-bottom text-center delete-button" onclick="sendDeleteImage(<?=$i['id']?>)">Удалить</div>
                 </div>
             <? } ?>
         </div>
