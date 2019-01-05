@@ -8,12 +8,17 @@ require_once 'back/utils.php';
 
 $page_title = "СарИсскуство";
 
-if(!isLogined() || !$_SESSION['isUser']){
-	header("Location: login.php?needAuth");
-}
-
 $add = $_GET['add'];
 $rem = $_GET['rem'];
+
+if(!isLogined() || !$_SESSION['isUser']){
+    $url = "";
+    if($add){
+        $url = "&url=". urlencode ("cart.php?add=".$add);
+    }
+	header("Location: login.php?needAuth".$url);
+}
+
 
 
 if($add){

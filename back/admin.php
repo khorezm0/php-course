@@ -6,7 +6,7 @@ require_once 'users.php';
 require_once 'utils.php';
 
 if(!$_SESSION["isAdmin"]){
-	header("Location: login.php?admin");
+	header("Location: /coursephp/login.php?admin");
 	die();
 }
 
@@ -14,6 +14,9 @@ $createRow = parseGet($_GET["create"]);
 $editRow = parseGet($_GET["edit"]);
 $delRow = parseGet($_GET["del"]);
 $value = parseGet(urldecode($_GET["value"]));
+
+$editOrderStatus = parseGet($_GET["edit_item"]);
+
 
 if($createRow && $value){
     $q = "INSERT INTO `$createRow` (`name`) VALUES ('$value')";
@@ -43,6 +46,19 @@ if($delRow){
 		die(0);
 	}
     $q = "DELETE FROM `$type` WHERE `id` = '$delRow'";
+    $res = mysql_query($q);
+    if($res){
+        echo 1;
+    }else{
+        echo mysql_error();
+    }
+}
+if($editOrderStatus) {
+    $val = parseGet($_GET['status']);
+    if(!$val){
+        die(0);
+    }
+    $q = "UPDATE `orders` SET `status` = '$val' WHERE `id` = '$editOrderStatus'";
     $res = mysql_query($q);
     if($res){
         echo 1;

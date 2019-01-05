@@ -4,6 +4,7 @@ require_once 'back/page-settings.php';
 require_once 'back/header.php';
 require_once 'back/shop-list.php';
 require_once 'back/footer.php';
+require_once 'back/utils.php';
 
 $page_title = "СарИсскуство";
 
@@ -78,29 +79,7 @@ $page_title = "СарИсскуство";
             </a>
         </div>
 
-        <? shopList("&#x1F525; Популярные:",[
-            [
-                "id" => 1,
-                "image" => "/coursephp/images/shop/i0000000001.jpg",
-                "name" => "Гранат",
-                "tags" => "живопись / постмодернизм / натюрморт / холст / 40х40см",
-                "price" => 1000
-            ],
-            [
-                "id" => 1,
-                "image" => "/coursephp/images/shop/i0000000002.jpg",
-                "name" => "Гранат",
-                "tags" => "живопись / постмодернизм / натюрморт / холст / 40х40см",
-                "price" => 1000
-            ],
-            [
-                "id" => 1,
-                "image" => "/coursephp/images/shop/i0000000003.jpg",
-                "name" => "Гранат",
-                "tags" => "живопись / постмодернизм / натюрморт / холст / 40х40см",
-                "price" => 1000
-            ],
-        ],"") ?>
+        <? shopList("&#x1F525; Популярные:",getPopulars(),"") ?>
 
         <? renderBottom(); ?>
     </body>

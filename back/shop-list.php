@@ -20,7 +20,7 @@
         <div class="container-fluid regular-list <?=$list_class?>">
             <div class="regular-list-inner">
                 <h4 class="title text-center text-md-left"><?=$title?></h4>
-                <div class="container-fluid flex-wrap">
+                <div class="container-fluid flex-wrap d-flex">
 
                     <?
 					if($arr)

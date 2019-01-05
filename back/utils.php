@@ -45,6 +45,45 @@ function getArrByRes($res){
     return $arr;
 }
 
+
+function getPopulars(){
+	
+	$q = mysql_query("SELECT item_id FROM orders_items GROUP BY item_id ORDER BY item_id DESC");
+	if($q){
+		$cond = "";
+		while($row = mysql_fetch_assoc($q)){
+			if($cond != "") $cond .= ", ";
+			$cond .= $row['item_id'];
+		}
+		if($cond != ""){
+			$q = mysql_query("SELECT
+			`id`,
+			`name`,
+			`price`,
+			`category_id`,
+			`style_id`,
+			`material_id`,
+			`size`,
+			`style_id`,
+			`author_id`,
+			`genre_id`,
+			(SELECT `name` FROM `category` WHERE `id` = `category_id`) AS category,
+			(SELECT `name` FROM `genre` WHERE `id` = `genre_id`) AS genre,
+			(SELECT `name` FROM `style` WHERE `id` = `style_id`) AS style,
+			(SELECT `name` FROM `material` WHERE `id` = `material_id`) AS material,
+			(SELECT `name` FROM `author` WHERE `id` = `author_id`) AS author,
+			(SELECT `url` FROM `item_image` WHERE item_image.item_id = items.id AND `hidden`='0' LIMIT 1) AS image
+			
+			FROM `items` WHERE `id` IN ($cond) AND `hidden` = 0 ");
+			
+			return getArrByRes($q);
+			
+		}
+	}
+	return [];
+}
+
+
 function getNewItem(){
     $res = mysql_query("INSERT INTO items (hidden) VALUES (1)");
     if($res){
@@ -207,6 +246,13 @@ function getCartSummary(){
         }
     }
     return $arr;
+}
+
+function getOrderStatusText($s){
+    if($s == 0) return "В ожидании";
+    if($s == 1) return "Проверка";
+    if($s == 2) return "Отправка";
+    if($s == 3) return "Завершена";
 }
 
 ?>

@@ -71,7 +71,12 @@ function renderTop()
                 </div>
                 <div class="row d-none d-md-flex d-lg-flex">
                     <div class="col-sm-3 col-md-2"><a href="/coursephp/index.php" class="btn btn-outline-light">Домашняя</a></div>
-                    <div class="col"><a href="/coursephp/gallery.php" class="btn btn-outline-light outl-btn-disbaled">Галерея</a></div>
+                    <div class="col-sm-3 col-md-2"><a href="/coursephp/gallery.php" class="btn btn-outline-light outl-btn-disbaled">Галерея</a></div>
+                    <? if($_SESSION['isAdmin']){ ?>
+                        <div class="col"><a href="/coursephp/orders.php" class="btn btn-outline-light outl-btn-disbaled">Заказы</a></div>
+                    <? } else {?>
+                        <div class="col"></div>
+                    <? } ?>
                     <!--<div class="col-sm"><a href="/coursephp/gallery.php" class="btn btn-outline-light outl-btn-disbaled">Заказ</a></div>-->
                     <div class="col-sm header-menu-btns">
                         <? if($_SESSION['isAdmin']){ ?>

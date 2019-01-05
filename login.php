@@ -64,7 +64,11 @@ if($_POST['type']){
         }else {
 			if(isset($_POST['admin'])) saveHeaders($r, false, false);
 			else saveHeaders($r, true, false);
-            header("Location: index.php");
+			if($_GET['url']){
+                header("Location: ".$_GET['url']);
+            }else{
+                header("Location: index.php");
+            }
             die();
         }
     }
@@ -97,7 +101,7 @@ if(isLogined()){
     <? renderTop();?>
 
     <div class="wrapper">
-        <form class="form-signin" method="post">
+        <form class="form-signin" action="<?=($_GET['url']) ? ("?url=" . urlencode($_GET['url'])) : "?"?>" method="post">
 			
             <? if($isError) { ?>
                 <div class="alert alert-<?=$errType?>" role="alert">
